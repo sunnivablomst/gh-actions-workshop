@@ -29,6 +29,7 @@ jobs:
         run: echo "Hello 🌏!"
 
   build:
+    name: build ✨
     runs-on: ubuntu-latest
 
     name: Checkout repository
