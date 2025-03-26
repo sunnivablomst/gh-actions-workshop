@@ -14,28 +14,33 @@ on:
 # These will be run in parallel.
 jobs:
   hello_world_job:
-    # As with workflow names (and even step names), job names are not
-    # strictly required, but they are good practice.
     name: Hello world 🌱
-
-    # There are many virtual machines we can run our jobs on. The most
-    # common one is `ubuntu-latest`. See this page for a full list of
-    # officially supported runners: https://github.com/actions/runner-images
     runs-on: ubuntu-latest
-
-    # Each job can have multiple steps. These will be run in sequence.
     steps:
       - name: Print message to terminal
         run: echo "Hello 🌏!"
+  
+  idk:
+    name: test and lint 🤷🏽‍♀️
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        run: vitest run
+      - name: lint
+        run: eslint . --ext .ts,.tsx
+
+    
 
   build:
+    name: build ✨
     runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-    name: Checkout repository
-    uses: actions/checkout@v4
+    - name: Install dependencies
+      run: npm ci
 
-    name: Install dependencies
-    run: npm ci
+    - name: Build
+      run: npm run build
 
-    name: Build
-    run: npm run build
