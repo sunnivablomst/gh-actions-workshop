@@ -31,12 +31,12 @@ jobs:
   build:
     name: build ✨
     runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-    name: Checkout repository
-    uses: actions/checkout@v4
+    - name: Install dependencies
+      run: npm ci
 
-    name: Install dependencies
-    run: npm ci
-
-    name: Build
-    run: npm run build
+    - name: Build
+      run: npm run build
